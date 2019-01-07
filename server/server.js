@@ -17,7 +17,7 @@ app.post('/todos', (req, res) => {
     });
 
     todo.save().then((doc)=>{
-        res.send(doc);
+        res.status(200).send(doc);
         // console.log("Successfully inserted -:", JSON.stringify(doc,undefined,2));
     },(err) => {
         res.status(400).send(err);
@@ -27,4 +27,6 @@ app.post('/todos', (req, res) => {
 
 app.listen(3000, () => {
     console.log('Started on port 3000');
-})
+});
+
+module.exports = { app };
