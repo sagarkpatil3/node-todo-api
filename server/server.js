@@ -16,9 +16,9 @@ app.post('/todos', (req, res) => {
         text: req.body.text
     });
 
-    todo.save().then((doc)=>{
-        res.status(200).send(doc);
-        // console.log("Successfully inserted -:", JSON.stringify(doc,undefined,2));
+    todo.save().then((todos)=>{
+        res.status(200).send(todos);
+        // console.log("Successfully inserted -:", JSON.stringify(todos,undefined,2));
     },(err) => {
         res.status(400).send(err);
         // console.log('Error in insertion', err);
@@ -27,8 +27,8 @@ app.post('/todos', (req, res) => {
 
 app.get('/todos', (req, res) => {
     console.log(res.body);
-    Todo.find().then( (doc) => {
-        res.send({doc});
+    Todo.find().then( (todos) => {
+        res.send({todos});
     }, (err) => {
         res.status(400).send(err);    
     })
